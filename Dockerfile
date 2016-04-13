@@ -1,5 +1,5 @@
 FROM jboss/wildfly:10.0.0.Final
-MAINTAINER BITFORCE-IT GmbH René Mertins (r.mertins@bitforce-it.de)
+MAINTAINER BITFORCE-IT GmbH René Mertins r.mertins@bitforce-it.de
 
 # go root to do copy and rights stuff
 USER root
