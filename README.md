@@ -109,3 +109,21 @@ configuration.
 The execute.sh script will start the wildfly and waits till it is up and running in default configuration 
 like it comes from Jboss. Then it uses the wildfly CLI to run the commands.cli file. After this it stops 
 wildfly again.
+
+In this example 4 different common tasks are done over CLI.
+
+1. It registers the mysql driver module which was copied into wildfly
+2. Creates an XA Datasource using the mysql driver and placing placeholders instead 
+of real parameters.
+3. It add a periodic log file handler
+4. It add's an logger category using the new logger handle.
+
+These are all very common steps, which nearly needs every JEE app to run.
+A good place to learn something about CLI and find some examples in the JBoss docs.
+
+[CLI Recipes Wildfly Docs](https://docs.jboss.org/author/display/WFLY8/CLI%20Recipes)
+
+[CLI Recipse AS71 *still works*](https://docs.jboss.org/author/display/AS71/CLI%20Recipes)
+
+You can do any kind of configuration here. The outcome of the CLI is printed out 
+to the docker buildprocess, so you can see errors or success message during build.
