@@ -42,23 +42,20 @@ This container has the following structure:
 
     in here are scripting stuff that is copied to /start and made runable
         
-    1. entrypoint.sh 
-    
+    1. entrypoint.sh     
         is the entrypoint shell script of this container
     
 2. customization/
 
     in here are wildfly configuration stuff, which in run at container build
     
-    1. execute.sh
-        
+    1. execute.sh        
         this script is run by Dockerfile on container build. It starts 
         the application server, enters the CLI and runs a command script 
         to configure wildfly for your needs.
         Thanks to [this blog post](https://goldmann.pl/blog/2014/07/23/customizing-the-configuration-of-the-wildfly-docker-image/)
         
-    2. commands.cli 
-        
+    2. commands.cli         
         WildFly configuration commands file, which can be used with the 
         wildfly CLI to configure the wildfly for your needs.
 
