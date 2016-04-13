@@ -1,0 +1,34 @@
+connect
+batch
+
+# register the mysql driver modul on name mysql
+/subsystem=datasources/jdbc-driver=mysql:add( \
+    driver-name=mysql, \
+    driver-module-name=com.mysql.driver, \
+    driver-xa-datasource-class-name=com.mysql.jdbc.jdbc2.optional.MysqlXADataSource \
+)
+
+# add a xa datasource using the mysql driver module.
+# instead of writing real connection values we use placeholders, which we can replace
+# on the fly when container starts.
+xa-data-source add \
+    --name=MyCustomDS \
+    --driver-name=mysql \
+    --jndi-name=java:jboss/datasources/MyCustomDS \
+    --user-name=###DB_USER### \
+    --password=###DB_PASSWORD### \
+    --use-ccm=false \
+    --max-pool-size=25 \
+    --blocking-timeout-wait-millis=5000 \
+    --enabled=true
+/subsystem=datasources/xa-data-source=MyCustomDS/xa-datasource-properties=ServerName:add(value=###DB_HOST###)
+/subsystem=datasources/xa-data-source=MyCustomDS/xa-datasource-properties=PortNumber:add(value=###DB_PORT###)
+/subsystem=datasources/xa-data-source=MyCustomDS/xa-datasource-properties=DatabaseName:add(value=###DB_SCHEMA###)
+
+# add a new periodic file handler for custom log file
+/subsystem=logging/periodic-rotating-file-handler=CUSTOM-LOG:add(level=DEBUG, file={"relative-to"=>"jboss.server.log.dir", "path"=>"custom.log"}, suffix=".yyyy-MM-dd", formatter="%d{MM-dd-yyyy HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n",  append=false, autoflush=true)
+
+# bind a logger category to your custom log handler
+/subsystem=logging/logger=com.my.application.category:add(use-parent-handlers=true,handlers=["CUSTOM-LOG"])
+
+run-batch
