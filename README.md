@@ -148,13 +148,13 @@ These placeholders are:
 2. \#\#\#DB_PORT\#\#\#
 
     TCP Port number on which the MySQL server is listening
-3. \###DB_SCHEMA###
+3. \#\#\#DB_SCHEMA\#\#\#
 
     The default database schema to apply to
-4. \###DB_USER###
+4. \#\#\#DB_USER\#\#\#
 
     The user name to use for connecting the database
-5. \###DB_PASSWORD###
+5. \#\#\#DB_PASSWORD\#\#\#
 
     The password of the user for connecting the database
 
