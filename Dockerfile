@@ -32,14 +32,17 @@ ENV DB_SCHEMA db_schema
 ENV AWS_KEY AKXXXXXXXXXXXXXXXXXX
 ENV AWS_SECRET fDEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-# copy the application
-# ADD Application.ear /opt/jboss/wildfly/standalone/deployments/Application.ear
-
 # configure jboss wildfly 10 application server
 RUN /opt/jboss/wildfly/bin/add-user.sh admin password --silent
 # run our app service customization script using standalone mode with standalone.xml configuration
 RUN /opt/jboss/wildfly/customization/execute.sh standalone standalone.xml
 
+# copy the application
+# ADD Application.ear /opt/jboss/wildfly/standalone/deployments/Application.ear
+
+# NOTE!!!
+# Do frequently changing stuff at the end of an dockerfile, because if there is no change in previus steps the cache is used.
+# Is one step changing something, all following steps have to be done too.
 
 ENTRYPOINT ["/start/entrypoint.sh"]
 CMD ["jboss"]
