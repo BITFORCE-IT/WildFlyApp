@@ -146,21 +146,26 @@ These placeholders are:
 
     Hostname or IP address of the MySQL server host
     
+
 2. \#\#\#DB_PORT\#\#\#
 
     TCP Port number on which the MySQL server is listening
     
+
 3. \#\#\#DB_SCHEMA\#\#\#
 
     The default database schema to apply to
     
+
 4. \#\#\#DB_USER\#\#\#
 
     The user name to use for connecting the database
     
+
 5. \#\#\#DB_PASSWORD\#\#\#
 
     The password of the user for connecting the database
+    
 
 To make sure these environment variables exist, they are all defined 
 with default values in Dockerfile like this:
