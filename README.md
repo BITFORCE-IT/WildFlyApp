@@ -142,7 +142,7 @@ placed in the standalone.xml during build phase by the commands.cli script.
 
 These placeholders are:
 
-1. ###DB_HOST###
+1. \###DB_HOST###
 
     Hostname or IP address of the MySQL server host
 2. ###DB_PORT###
