@@ -254,3 +254,22 @@ Parameter description:
 
     maps a local directory to the provied volume mount of the container.
     
+## Links and References
+Following a list of Webpages off all used software and knowledge resources 
+we used to build this example.
+
+[Wildfly application server](http://wildfly.org/)
+
+[Official Wildfly Docker Image](https://hub.docker.com/r/jboss/wildfly/)
+
+[Official Wildfly Docker Git Repo](https://github.com/jboss-dockerfiles/wildfly)
+
+[Blog Post *Customizing the configuration of the WildFly Docker image*](https://goldmann.pl/blog/2014/07/23/customizing-the-configuration-of-the-wildfly-docker-image/)
+
+[Blog Post *Logging with the WildFly Docker image*](https://goldmann.pl/blog/2014/07/18/logging-with-the-wildfly-docker-image/)
+
+[AWS Java SDK](https://aws.amazon.com/de/sdk-for-java/)
+
+[Docker Reference](https://docs.docker.com/engine/reference/builder/)
+
+[Best practices for writing Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)
