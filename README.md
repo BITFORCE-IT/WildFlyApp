@@ -213,6 +213,7 @@ To use everything included in this example, you have to do two things.
     
     This application should include a persistence unit using the 
     "MyCustomDS" data source and uses the AWS Java SDK. 
+    
 
 2. Provide all environment variables in the docker run command
 
@@ -225,21 +226,26 @@ Parameter description:
 - \-\-name
 
     defines a custom name for the container instance. Better to identify then the auto generated one
+    
 
 - \-\-rm
 
     tells docker to remove this container after it stops. Keep the cache clean.
+    
 
 - \-e 
 
     defines an environement variable, this parameter needs to be followed 
     by case sensitive property name and value, seperated by equals sign.
+    
 
 - \-p
 
     defines the network NAT rules for binding docker host ports to 
     container ports.
+    
 
 - \-v
 
     maps a local directory to the provied volume mount of the container.
+    
