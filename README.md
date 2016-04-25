@@ -145,15 +145,19 @@ These placeholders are:
 1. \#\#\#DB_HOST\#\#\#
 
     Hostname or IP address of the MySQL server host
+    
 2. \#\#\#DB_PORT\#\#\#
 
     TCP Port number on which the MySQL server is listening
+    
 3. \#\#\#DB_SCHEMA\#\#\#
 
     The default database schema to apply to
+    
 4. \#\#\#DB_USER\#\#\#
 
     The user name to use for connecting the database
+    
 5. \#\#\#DB_PASSWORD\#\#\#
 
     The password of the user for connecting the database
@@ -209,7 +213,7 @@ To use everything included in this example, you have to do two things.
     
     This application should include a persistence unit using the 
     "MyCustomDS" data source and uses the AWS Java SDK. 
-    
+
 2. Provide all environment variables in the docker run command
 
 Full command example using all environment parameters, volumes and ports. 
@@ -218,24 +222,24 @@ Full command example using all environment parameters, volumes and ports.
 
 Parameter description:
 
-- --name
+- \-\-name
 
     defines a custom name for the container instance. Better to identify then the auto generated one
-    
-- --rm
+
+- \-\-rm
 
     tells docker to remove this container after it stops. Keep the cache clean.
 
-- -e 
+- \-e 
 
     defines an environement variable, this parameter needs to be followed 
     by case sensitive property name and value, seperated by equals sign.
 
-- -p
+- \-p
 
     defines the network NAT rules for binding docker host ports to 
     container ports.
 
-- -v
+- \-v
 
-   maps a local directory to the provied volume mount of the container.
+    maps a local directory to the provied volume mount of the container.
