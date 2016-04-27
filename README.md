@@ -45,7 +45,6 @@ This image has the following structure:
     1. entrypoint.sh
     
         is the entry point shell script of this image
-    
 
 2. customization/
 
