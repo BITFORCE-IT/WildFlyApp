@@ -114,15 +114,15 @@ The execute.sh script will start the Wildfly and waits till it is up and running
 like it comes from JBoss. Then it uses the Wildfly CLI to run the commands.cli file. After this it stops 
 Wildfly again.
 
-In this example 4 different common tasks are done over CLI.
+In this example, 4 different common tasks are done over CLI.
 
 1. It registers the MySQL driver module which was copied into Wildfly
-2. Creates an XA Data source using the MySQL driver and placing placeholders instead 
+2. Creates an XA data source using the MySQL driver and placing placeholders instead 
 of real parameters.
 3. It adds a periodic log file handler
 4. It adds a logger category using the new periodic log file handler.
 
-These are all very common steps, which nearly needs every JEE app to run.
+These are all very common steps, which nearly every JEE app needs to run.
 A good place to learn something about CLI and find some examples in the JBoss docs.
 
 [CLI Recipes Wildfly Docs](https://docs.jboss.org/author/display/WFLY8/CLI%20Recipes)
@@ -133,7 +133,7 @@ You can do any kind of configuration here. The outcome of the CLI is printed out
 to the Docker build process standard out, so you can see errors or success message during build.
 
 ### Execution
-When the image is build and ready to run. It uses its own entry point 
+When the image is build and ready to run, it uses its own entry point 
 script to run the application server.
 This entry point checks the environment for usable variables and replaces 
 them in the application server’s configuration file.
@@ -147,23 +147,28 @@ These placeholders are:
 
 1. \#\#\#DB_HOST\#\#\#
 
-    Hostname or IP address of the MySQL server host
+    hostname or IP address of the MySQL server host
+    
 
 2. \#\#\#DB_PORT\#\#\#
 
     TCP Port number on which the MySQL server is listening
+    
 
 3. \#\#\#DB_SCHEMA\#\#\#
 
-    The default database schema to apply to
+    the default database schema to apply to
+    
 
 4. \#\#\#DB_USER\#\#\#
 
-    The user name to use for connecting the database
+    the user name to use for connecting the database
+    
 
 5. \#\#\#DB_PASSWORD\#\#\#
 
-    The password of the user for connecting the database
+    the password of the user for connecting the database
+    
 
 To make sure these environment variables exist, they are all defined 
 with default values in Dockerfile like this:
@@ -174,18 +179,18 @@ with default values in Dockerfile like this:
     ENV DB_PASSWORD db_password
     ENV DB_SCHEMA db_schema
 
-Now when you run the image you can overwrite every of this values by 
+Now when you run the image you can overwrite all of this values by 
 supplying these variables to the run command.
 
     docker run -e DB_HOST=192.168.0.100 -e DB_USER=dbuser -e DB_PASSWORD=password -e DB_SCHEMA=myDB my-wildfly-app
 
 When you have looked in the Dockerfile, you will have recognized that 
-are two more environment variables defined.
+there are two more environment variables defined.
 
     ENV AWS_KEY AKXXXXXXXXXXXXXXXXXX
     ENV AWS_SECRET fDEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-These is an example for passing in AWS credentials to the application 
+This is an example for passing in AWS credentials to the application 
 server environment. They are used in the entry point script and placed 
 as Java properties.
 
@@ -193,15 +198,15 @@ as Java properties.
 
 They are set to the properties: aws.accessKeyId and aws.secretKey.
 When you are using the correct credentials provider for your AWS connection 
-this values are used.
+these values are used.
 
 ### Logging Volume
-The Dockerfile defines a mount able volume, which is passed to the 
-application server as base log dir.
-This way you get your application server logs, where you want them. 
-Outside of the container.
+The Dockerfile defines a mountable volume, which is passed to the 
+application server as base log directory.
+This way you get your application server logs, where you want them, 
+outside of the container.
 
-Definition of Volume in Dockerfile:
+Definition of volume in Dockerfile:
 
     VOLUME /data/logs
 
@@ -210,7 +215,7 @@ And in the entrypoint.sh it is passed to the application server by:
     -Djboss.server.log.dir=/data/logs
 
 ## Example
-To use everything included in this example, you have to do two things.
+To use everything included in this example, you need to do.
 
 1. Place a JEE application archive as described in usage chapter.
 
@@ -228,29 +233,31 @@ Parameter description:
 
 - \-\-name
 
-    defines a custom name for the container instance. Better to identify then the auto generated one
+    defines a custom name for the container instance. 
+    A container is easer to identify by a custom name then by the auto 
+    generated one from Docker.
 
 - \-\-rm
 
-    tells docker to remove this container after it stops. Keep the cache clean.
+    tells docker to remove this container after it stops to keep the cache clean.
 
 - \-e 
 
-    defines an environement variable, this parameter needs to be followed 
+    defines an environment variable. This parameter needs to be followed 
     by case sensitive property name and value, seperated by equals sign.
 
 - \-p
 
-    defines the network NAT rules for binding docker host ports to 
+    defines the network NAT rules for binding Docker host ports to 
     container ports.
 
 - \-v
 
-    maps a local directory to the provied volume mount of the container.
+    maps a local directory to the provided volume mount of the container.
 
 
 ## Links and References
-Following a list of Webpages off all used software and knowledge resources 
+Following a list of Webpages of all used software and knowledge resources 
 we used to build this example.
 
 [Wildfly application server](http://wildfly.org/)
