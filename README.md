@@ -43,7 +43,6 @@ This image has the following structure:
     scripting stuff is located, that is copied to /start and made runnable
 
     1. entrypoint.sh
-    
         is the entry point shell script of this image
         
 
