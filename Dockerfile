@@ -1,4 +1,4 @@
-FROM jboss/wildfly:10.0.0.Final
+FROM jboss/wildfly:13.0.0.Final
 MAINTAINER BITFORCE-IT GmbH René Mertins r.mertins@bitforce-it.de
 
 # go root to do copy and rights stuff
@@ -40,6 +40,8 @@ ENV AWS_SECRET fDEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 RUN /opt/jboss/wildfly/bin/add-user.sh admin password --silent
 # run our app service customization script using standalone mode with standalone.xml configuration
 RUN /opt/jboss/wildfly/customization/execute.sh standalone standalone.xml
+
+RUN rm -rf /opt/jboss/wildfly/standalone/configuration/standalone_xml_history/current
 
 # copy the application
 # ADD Application.ear /opt/jboss/wildfly/standalone/deployments/Application.ear
